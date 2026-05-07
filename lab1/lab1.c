@@ -47,7 +47,7 @@ int main(int argc, char** argv)
     double time1, time2;
 
     int n = 4;
-    long iteration_number = 1e9;
+    long iteration_number = 1e8;
     float totaltime_sse = 0.0f, totaltime_seq = 0.0f;
 
     float a[n];
