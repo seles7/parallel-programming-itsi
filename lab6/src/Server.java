@@ -4,7 +4,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.Scanner;
 
 public class Server {
-    private static final int PORT = 12346;
+    private static final int PORT = 7777;
     private static ServerSocket serverSocket;
     private static Scanner scanner;
     private static CopyOnWriteArrayList<ClientHandler> clients = new CopyOnWriteArrayList<>();

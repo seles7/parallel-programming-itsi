@@ -5,11 +5,13 @@ import java.util.concurrent.*;
 public class Main {
 
     public static final int THREADS = 5;
-    public static final int COUNT = 2;
+    public static final int COUNT = 4;
     public static final double NSEC = 1000_000_000.0;
 
     public static MySemaphore mySemaphore = new MySemaphore(COUNT);
     public static Semaphore regularSemaphore = new Semaphore(COUNT);
+
+    private static Object lock = new Object();
 
     public static void main(String[] args) {
         
@@ -44,8 +46,12 @@ public class Main {
 
                 if (printing) {
 
-                    System.out.println("Поток " + threadName + " ожидает семафор. Свободные места: " + semaphore.availablePermits());
-                    semaphore.acquire();
+                    synchronized(lock)
+                    {
+                        System.out.println("Поток " + threadName + " ожидает семафор. Свободные места: "
+                                + semaphore.availablePermits());
+                        semaphore.acquire();
+                    }
                     System.out.println(
                             "Поток " + threadName + " занял семафор. Свободные места: " + semaphore.availablePermits());
                     
