@@ -7,7 +7,7 @@
 #include <omp.h>
 
 int counter = 0;
-int iter_count = 2e9;
+int iter_count = 1e9;
 
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
@@ -40,29 +40,20 @@ void *heavy_task(void *i)
     return NULL;
 }
 
-void pthreads(int threads_num) 
-{
+void pthreads(int threads_num) {
     pthread_t threads[threads_num];
     int status;
-
-    for (int i = 0; i < threads_num; i++) 
-    {
+    for (int i = 0; i < threads_num; i++) {
         printf("Запуск потока №%d\n", i);
-
         int *thread_num = (int*) malloc(sizeof(int));
         *thread_num = i;
-
         status = pthread_create(&threads[i], NULL, heavy_task, thread_num);
-        
-        if (status != 0) 
-        {
+        if (status != 0) {
             fprintf(stderr, "pthread_create failed, error code %d\n", status);
             exit(EXIT_FAILURE);
         }
     }
-
-    for (int i = 0; i < threads_num; i++) 
-    {
+    for (int i = 0; i < threads_num; i++) {
         pthread_join(threads[i], NULL);
     }
     return;

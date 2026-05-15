@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.concurrent.*;
 
-public class Main {
+public class lab4 {
     public static final int THREADS = 40;
     public static final int ITERATIONS = 100_000;
     public static final double NSEC = 1000_000_000.0;
