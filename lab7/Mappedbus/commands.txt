@@ -1,0 +1,8 @@
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export PATH=$JAVA_HOME/bin:$PATH
+
+java -version
+
+java -cp mappedbus.jar io.mappedbus.sample.object.ObjectWriter 0
+java -cp mappedbus.jar io.mappedbus.sample.object.ObjectWriter 1
+java -cp mappedbus.jar io.mappedbus.sample.object.ObjectReader
